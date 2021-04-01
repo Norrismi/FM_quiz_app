@@ -1,0 +1,34 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.container{
+    margin: 10px;
+}
+h2{
+    font-weight: lighter;
+}
+
+
+h1{
+    color: purple;
+    font-weight: lighter;
+}
+
+.answer_options{
+    display: flex;
+    flex-direction: column;
+}
+
+.question{
+ 
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.selections{
+    background-color: lightgray;
+    margin-bottom: 2px;
+}
