@@ -11,7 +11,7 @@ const questions = [
             "ShopCommerce",
             "BigCommerce"
         ],
-        correct: 1,
+        //correct: 0,
         number: 1,
     },
     {
@@ -22,7 +22,7 @@ const questions = [
             "To provide support with a deep understanding of how the platform works and what its limitations are",
             "All the above"
         ],
-        correct: 2,
+        //correct: 2,
         number: 2,
 
     },
@@ -34,136 +34,118 @@ const questions = [
             "They need to know web development, the platform itself, and the liquid template language",
             "All the above"
         ],
-        correct: 2,
+        //correct: 2,
         number: 3,
 
     }
-
+    
 ]
 
 
 
 
-// const quest = document.querySelector('#quest')
 
-// questions.map(question => {
-//     let questP = document.createElement('p')
-//     questP.innerHTML = question.q
-//     quest.appendChild(questP)
-
-//     let choicesP = document.createElement('p')
-//     choicesP.innerHTML = question.a
-//     quest.appendChild(choicesP)
-
-//     console.log(question.q)
-// })
+let correctAnswer = 0;
 
 
+//Question One
+let questOneSelection = document.querySelectorAll('.question_one input')
+questOneSelection.forEach(selection => {
+    selection.addEventListener('change', e => {
+       let selected = e.target.value.toLowerCase()
+       let correct = questions[0].a[0].toLowerCase()
 
-let quizEl = document.querySelector('#quest')
-function init() {
-
-
-    let quizStr = ''
-    //let questStr = ''
-    let answerStr = ''
-
-    questions.map(question => {
-        let answerStr = ''
-        question.a.map(answer => {
-            answerStr += `
-            <li>
-             <label htmlFor="">
-                <input type="radio"/>
-                ${answer}
-             </label>
-            
-            </li>
-            
-            `
-            
-        })
-        
-         
-        quizStr += `
-            
-            
-            <p>${question.q}</p>
-                <ul>
-                    <ul>
-                        ${answerStr}
-                    </ul>
-                </ul>
-            `
-    })
-
-    quizEl.innerHTML = quizStr + answerStr
-}
-init()
-
-
-
-
-
-
-//questions.map(question => console.log(question.a))
-
-
-
-//let questions = document.getElementsByClassName('question')
-
-
-
-
-// function to remove show_active and add to clicked
-function setNewActive(el) {
-    for (var question of questions) {
-        //select all .quiz_body
-        let quizbodies = document.getElementsByClassName('quiz_body')
-        // remove('show-active')
-        for (var quizBody of quizBodies) {
-            quizBody.classList.remove('show_active')
+       console.log(selected )
+        if(selected == correct ){
+            correctAnswer++
         }
-        //add .show_active (back) to clicked
-    }
-
-}
-
-
-
-//select radio inputs and loop through
-var radios = document.getElementsByName('myradio')
-for (var radio of radios) {
-    //add a click listner to each input
-    radio.addEventListner('click', function (e) {
-        //setNewActive(e)
-        console.log(e)
-
-        // look up console.log
     })
-}
+})
+
+//Question Two
+let questTwoSelection = document.querySelectorAll('.question_two input')
+questTwoSelection.forEach(selection => {
+    selection.addEventListener('change', e=> {
+        let selected = e.target.value.toLowerCase()
+        let correct = 'all the above'
+
+        if(selected === correct){
+            correctAnswer++
+            // console.log('you are correct ' + correctAnswer)
+        }
+    })
+})
+
+//Question Three
+let questThreeSelection = document.querySelectorAll('.question_three input')
+questThreeSelection.forEach(selection => {
+    selection.addEventListener('change', e=> {
+        let selected = e.target.value.toLowerCase()
+        let correct = 'all the above'
+
+        if(selected === correct){
+            correctAnswer++
+             console.log('you are correct ' + correctAnswer)
+        }
+    })
+})
 
 
 
+let questionOneBtn = document.querySelector('.question_one_submit')
+let questionTwoBtn = document.querySelector('.question_two_submit')
+let questionThreeBtn = document.querySelector('.question_three_submit')
+let result = document.querySelector('.quiz_result')
 
 
 
+let questionOne = document.querySelector('.question_one')
+let questionTwo = document.querySelector('.question_two')
+let questionThree = document.querySelector('.question_three')
+
+
+    //show question one
+    document.addEventListener('DOMContentLoaded', (e) => {
+        e.preventDefault()
+        questionOne.style.display = 'block'
+        questionTwo.style.display = 'none'
+        questionThree.style.display = 'none'
+        result.style.display = 'none'
+    })
 
 
 
+    questionOneBtn.addEventListener('click', e=>{
+        e.preventDefault()
+        questionOne.style.display = 'none'
+        questionTwo.style.display = 'block'
+        questionThree.style.display = 'none'
+        result.style.display = 'none'
+    })
+
+
+    questionTwoBtn.addEventListener('click', e=>{
+        e.preventDefault()
+        questionOne.style.display = 'none'
+        questionTwo.style.display = 'none'
+        questionThree.style.display = 'block'
+        result.style.display = 'none'
+    })
+
+
+    questionThreeBtn.addEventListener('click', e=>{
+        e.preventDefault()
+        questionOne.style.display = 'none'
+        questionTwo.style.display = 'none'
+        questionThree.style.display = 'none'
+        result.style.display = 'block'
+    })
+
+
+    result.innerHTML = `Thanks for taking the quiz your result is ${correctAnswer}/3 `
 
 
 
-
-
-
-//show desired question and answers choices
-
-
-//click on the next button to show next question
-
-
-//record user answer selections
 
 
 
